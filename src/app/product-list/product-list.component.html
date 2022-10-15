@@ -1,0 +1,18 @@
+<div>
+    <h1 class="list-head">Product Listing Page</h1>
+    <div class="list-head">
+        <form [formGroup]="productCategory">
+            <label>Category: </label>
+            <select formControlName="category" [(ngModel)]="selectedProduct" (change)="onCategorySelection()">
+                <option *ngFor="let option of product_list_data"
+                [ngValue]="option">{{ option.name }}</option>
+            </select>
+        </form>
+    </div>
+    <hr>
+</div>
+<div style="text-align: center;">
+    <div class="product-card" *ngFor="let product of selectedProductDetail">
+            <app-product-mini-detail (click)="fetchProductDetails(product)" [product]="product" ></app-product-mini-detail>
+    </div>
+</div>
